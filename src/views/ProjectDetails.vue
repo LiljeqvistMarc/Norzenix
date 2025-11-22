@@ -22,7 +22,7 @@ import NavBar from '../components/NavBar.vue'
           </div>
           <div class="meta-item">
             <span class="label">Stack</span>
-            <span class="value">Vue, Spring Boot, MySQL, Java</span>
+            <span class="value">Vue, Spring Boot, MySQL, Java, Azure, Git</span>
           </div>
         </div>
       </div>
@@ -35,7 +35,7 @@ import NavBar from '../components/NavBar.vue'
           <h2>The Journey</h2>
           <p>
             I joined a tight-knit team running a property management system that had been in operation for a few years.
-            It was a classic "startup" environment—fast-paced, rough around the edges, and driven by constant
+            It was a classic startup environment, fast-paced, rough around the edges, and driven by constant
             feature requests from our users.
           </p>
           <p class="mt-4">
@@ -570,7 +570,8 @@ p {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: center;
+  /* CHANGED: Aligns text and code to the top */
+  align-items: start;
 }
 
 .reverse {

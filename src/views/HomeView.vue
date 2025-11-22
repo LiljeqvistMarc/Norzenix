@@ -42,15 +42,24 @@ const sendEmail = async () => {
   try {
     // Prepare template parameters for EmailJS
     const templateParams = {
+      to_name: 'Marc',             // Your name (optional but good practice)
       from_name: form.value.name,
       from_email: form.value.email,
       message: form.value.message
     }
 
-    // Send using the keys from src/config/emailjs.js
+    // 1. Send Notification to YOU
     await emailjs.send(
         emailConfig.serviceId,
-        emailConfig.templateId,
+        emailConfig.adminTemplateId,
+        templateParams,
+        emailConfig.publicKey
+    )
+
+    // 2. Send Confirmation to USER
+    await emailjs.send(
+        emailConfig.serviceId,
+        emailConfig.userTemplateId,
         templateParams,
         emailConfig.publicKey
     )
@@ -131,6 +140,9 @@ const sendEmail = async () => {
               <span class="tag">Vue.js</span>
               <span class="tag">Java Spring Boot</span>
               <span class="tag">MySQL</span>
+              <!-- ADDED SKILLS HERE -->
+              <span class="tag">Azure</span>
+              <span class="tag">Git</span>
             </div>
             <router-link to="/project/property-management" class="cta-link">View Case Study &rarr;</router-link>
           </div>
@@ -207,6 +219,7 @@ const sendEmail = async () => {
             </p>
           </div>
         </div>
+
       </section>
 
       <!-- ABOUT ME SECTION (ID: about) -->
@@ -217,9 +230,7 @@ const sendEmail = async () => {
           <div class="about-content">
             <h2 class="section-title">Beyond the Code</h2>
             <p class="bio-intro">
-              I am a Danish developer with a deep connection to Japan. After visiting regularly for over a decade,
-              I finally made the move to Tokyo a year ago to bridge the gap between <strong>Scandinavian functionality</strong>
-              and <strong>Japanese precision</strong>.
+              I'm a Danish developer living in Tokyo. I got hooked on Japan years ago while studying how culture shapes everything from design to daily routines. Reading Hofstede's cultural dimensions opened my eyes to how differently we solve the same problems. Met my wife here, and eventually the regular visits turned into just... staying. I'm fascinated by the interplay between Scandinavian and Japanese approaches, and I believe here's a lot we can learn from each other.
             </p>
 
             <p class="bio-text">
@@ -228,7 +239,7 @@ const sendEmail = async () => {
               but also a joy to live in (Frontend).
               <br><br>
               I studied <strong>Marketing</strong> and <strong>UX Design</strong> before mastering web development, giving me a unique ability
-              to see products from every angle—business, user, and engineering. I am fascinated by <strong>psychology</strong>,
+              to see products from every angle: business, user, and engineering. I am fascinated by <strong>psychology</strong>,
               constantly analyzing <em>why</em> users behave the way they do, while striving to create supportive, empathetic environments for my team.
             </p>
           </div>
@@ -247,7 +258,7 @@ const sendEmail = async () => {
 
         </div>
 
-        <!-- Interests Grid -->
+        <!-- Interests Grid (3 Columns) -->
         <div class="interests-full-container">
           <div class="interests-grid">
             <div class="interest-item">
@@ -288,7 +299,7 @@ const sendEmail = async () => {
             <h2 class="contact-title">May I buy you a coffee?</h2>
             <p class="contact-text">
               Whether you have a complex project that needs architectural guidance or simply want to discuss
-              the intersection of Scandinavian and Japanese design—I am always open for a chat.
+              the intersection of Scandinavian and Japanese design. I am always open for a chat.
             </p>
             <p class="contact-subtext">
               Available for in-person meetings in Tokyo or virtual calls worldwide.
@@ -372,7 +383,7 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -4;
+  z-index: -4; /* Furthest back */
   pointer-events: none;
   background: var(--color-bg);
 }
@@ -406,7 +417,7 @@ section {
   max-width: 1000px;
   margin: 0 auto;
   text-align: center;
-  min-height: 82vh;
+  min-height: 82vh; /* Full screen feel */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -784,7 +795,6 @@ section {
 .contact-section {
   position: relative;
   padding: 10rem 0 6rem 0;
-  /* GRADIENT BACKGROUND (No Sun) */
   background: linear-gradient(to bottom, rgba(13, 24, 32, 0.6) 0%, rgba(13, 24, 32, 0.95) 100%);
   z-index: 5;
 }
