@@ -1,0 +1,63 @@
+/* src/assets/main.css */
+
+/* 1. Force Load the Fonts (Manrope & Inter) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+    /* --- RESTORED FONTS --- */
+    --font-heading: 'Manrope', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* --- BRAND: NORZENIX --- */
+    --color-bg: #0F1C24;         /* Deep Navy */
+    --color-text: #F0F4F8;       /* Ice White */
+
+    /* Brand Palette */
+    --brand-navy: #284B63;
+    --brand-teal: #488998;
+    --brand-sage: #94B49F;
+    --brand-gold: #D9A55B;
+
+    --color-accent: var(--brand-gold);
+}
+
+/* Universal Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body); /* Applies Inter to body text */
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading); /* Applies Manrope to headings */
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+#app {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
